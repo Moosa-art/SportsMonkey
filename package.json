@@ -4,16 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "server": "node server/index.js",
-    "server:watch": "node --watch server/index.js",
-    "dev:full": "concurrently \"npm run server:watch\" \"npm run dev\"",
-    "kill:server": "node -e \"const { execSync } = require('child_process'); try { const pid = execSync('lsof -ti:3001').toString().trim(); if (pid) { execSync('kill -9 ' + pid); console.log('Killed PID', pid); } } catch(e) { console.log('No process on 3001'); }\"",
-    "restart": "npm run kill:server && npm run server:watch",
-    "migrate": "node scripts/migrate.mjs",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "node server/index.js",
+  "dev": "vite",
+  "server": "node server/index.js",
+  "server:watch": "node --watch server/index.js",
+  "dev:full": "concurrently \"npm run server:watch\" \"npm run dev\"",
+  "kill:server": "node -e \"const { execSync } = require('child_process'); try { const pid = execSync('lsof -ti:3001').toString().trim(); if (pid) { execSync('kill -9 ' + pid); console.log('Killed PID', pid); } } catch(e) { console.log('No process on 3001'); }\"",
+  "restart": "npm run kill:server && npm run server:watch",
+  "migrate": "node scripts/migrate.mjs",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.658.0",
