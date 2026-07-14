@@ -1,3 +1,12 @@
+# Dependencies
+node_modules/
 
-# Area 5 — locally-stored uploads (dev)
+# Build output
+dist/
+
+# Environment files
+.env
+.env.local
+
+# Uploads
 uploads/
