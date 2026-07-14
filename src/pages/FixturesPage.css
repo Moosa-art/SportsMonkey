@@ -1,0 +1,137 @@
+.fixtures-page {
+  background: var(--navy);
+  min-height: 100vh;
+  padding-top: 54px; /* clears the fixed Header */
+}
+
+
+.fp-month-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--navy);
+}
+
+.fp-year-pill {
+  background: #fff;
+  color: var(--navy);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 800;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.fp-months {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  flex: 1;
+}
+
+.fp-month {
+  padding: 6px 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.fp-month.active {
+  color: #fff;
+  border-bottom-color: var(--accent-red);
+}
+
+.fp-month-empty,
+.fp-month:disabled {
+  color: rgba(255,255,255,0.25);
+  cursor: not-allowed;
+  border-bottom-color: transparent;
+}
+
+.fp-list {
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  margin-top: 4px;
+  padding: 4px 0;
+  min-height: 60vh;
+}
+
+.fp-fixture {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gray-100);
+  cursor: pointer;
+}
+
+.fp-fixture:last-child { border-bottom: none; }
+
+.fp-status {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 8px;
+}
+
+.fp-teams {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.fp-team-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fp-team-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.fp-score-box {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.fp-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fp-date {
+  font-size: 11px;
+  color: var(--gray-500);
+}
+
+.fp-links {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.fp-link {
+  font-size: 11px;
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 500;
+}
+
+.fp-link:hover { color: var(--navy); }

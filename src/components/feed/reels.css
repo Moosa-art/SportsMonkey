@@ -1,0 +1,278 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Area 11 — Reels
+   Inline 9:16 reel card + full-screen swipe player + shared media controls.
+   Scoped to .cf-reel-card / .reel-* / .reelp-* so nothing else is disturbed.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── shared mute toggle (also used by VideoCard) ── */
+.cf-mute-toggle,
+.reel-mute {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(11, 27, 58, 0.72);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.cf-mute-toggle:hover,
+.reel-mute:hover {
+  background: rgba(11, 27, 58, 0.9);
+  transform: scale(1.06);
+}
+
+/* ── inline reel card ── */
+.cf-reel-card {
+  padding: 0;
+  overflow: hidden;
+}
+.reel-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 78vh;
+  margin: 0 auto;
+  background: #000;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.reel-video,
+.reel-poster img,
+.reel-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.reel-video {
+  border: none;
+  background: #000;
+  cursor: pointer;
+}
+.reel-poster {
+  display: block;
+  border: none;
+  padding: 0;
+  background: #000;
+  cursor: pointer;
+}
+
+/* bottom gradient + meta */
+.reel-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: 48px 64px 16px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+.reel-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.reel-badge {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+.reel-source {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 600;
+}
+.reel-title {
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reel-expand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(11, 27, 58, 0.62);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.reel-expand:hover {
+  background: rgba(11, 27, 58, 0.88);
+}
+
+/* ── vertical action rail (shared by card + player) ── */
+.reel-rail {
+  position: absolute;
+  right: 8px;
+  bottom: 84px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.reel-rail-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.55));
+  transition: transform 0.12s ease;
+}
+.reel-rail-btn:hover {
+  transform: scale(1.08);
+}
+.reel-rail-btn.liked {
+  color: #ff3b5c;
+}
+.reel-rail-btn.saved {
+  color: #ffd24a;
+}
+
+/* ── full-screen reel player ── */
+.reelp-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #000;
+  display: flex;
+  justify-content: center;
+}
+.reelp-close {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1002;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.reelp-close:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+.reelp-scroller {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.reelp-scroller::-webkit-scrollbar {
+  display: none;
+}
+.reelp-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  background: #000;
+}
+.reelp-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.reelp-video,
+.reelp-poster,
+.reelp-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.reelp-video {
+  border: none;
+  background: #000;
+  cursor: pointer;
+}
+.reelp-poster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reelp-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: 56px 80px 28px 18px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+.reelp-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.reelp-source {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 700;
+}
+.reelp-title {
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.reelp-mute {
+  bottom: 24px;
+  right: 16px;
+}
+.reelp-slide .reel-rail {
+  bottom: 96px;
+  right: 12px;
+}

@@ -1,0 +1,698 @@
+/* ====================================================
+   OnboardingCarousel.css
+   Layout matches the reference design pixel-precisely:
+   - Title + subtitle at the TOP-LEFT
+   - Art fills the middle
+   - Buttons + badges + dots in the footer
+   ==================================================== */
+
+/* ── Root ─────────────────────────────────────────── */
+.ob-root {
+  width: 100%;
+  height: calc(100vh - 0px) !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #fff;
+  position: fixed;
+  max-width: 700px;
+  top: 0;
+  padding-bottom: 110px;
+}
+
+/* ── Background (full-bleed photo + dark overlay) ── */
+.ob-fullbg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: background-image 0.4s ease;
+}
+.ob-fullbg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 14, 75, 0.78) 0%,
+    rgba(0, 10, 60, 0.82) 40%,
+    rgba(0, 8, 50, 0.92) 100%
+  );
+  z-index: 1;
+}
+
+/* ── Top bar ──────────────────────────────────────── */
+.ob-topbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 14, 75, 0.55);
+  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+}
+.ob-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ob-brand-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: contain;
+  padding: 2px;
+}
+.ob-brand-name {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: #fff;
+}
+.ob-brand-442 {
+  background: #fff;
+  color: #001655;
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-size: 13px;
+  margin-left: 1px;
+}
+
+/* ── Slide body ───────────────────────────────────── */
+.ob-body {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+.ob-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.ob-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Title block – top-left aligned, matching reference */
+.ob-copy {
+  padding: 20px 20px 10px 20px;
+  flex-shrink: 0;
+}
+.ob-title {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin: 0 0 6px 0;
+  text-align: left;
+}
+.ob-title-line {
+  display: block;
+}
+.ob-subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  text-align: left;
+}
+
+/* Art container – fills remaining space */
+.ob-art-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px 8px;
+  overflow: hidden;
+}
+
+/* ── Footer ───────────────────────────────────────── */
+.ob-footer {
+  position: relative;
+  z-index: 10;
+  padding: 12px 18px calc(10px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 10, 55, 0.7);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.ob-btns {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+.ob-btn {
+  flex: 1;
+  padding: 14px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    opacity 0.15s ease;
+  text-align: center;
+}
+.ob-btn:active {
+  transform: scale(0.97);
+}
+
+/* "Get Started" — white background, navy text (matches reference) */
+.ob-btn-outline {
+  background: #fff;
+  color: #001655;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.ob-btn-outline:hover {
+  opacity: 0.9;
+}
+
+/* Club name btn — dark navy fill, white text, white border */
+.ob-btn-filled {
+  background: #05103a;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.ob-btn-filled:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── App Store Badges ─────────────────────────────── */
+.ob-store-badges {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.ob-store-badge {
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.1s ease;
+}
+.ob-store-badge:hover {
+  transform: scale(1.04);
+}
+
+/* ── Dot indicators ───────────────────────────────── */
+.ob-dots {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.ob-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+.ob-dot-active {
+  width: 28px;
+  background: #fff;
+}
+
+/* ================================================================
+   SLIDE 1 — NETWORK ART
+   ================================================================ */
+.ob-art-network {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 420px;
+  /* Enforce explicit height so percentage-positioned children work */
+  min-height: 280px;
+  max-height: 340px;
+}
+.ob-net-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Centre node */
+.ob-net-center {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+  z-index: 5;
+}
+.ob-net-center img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+/* Outer nodes */
+.ob-net-node {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  flex-shrink: 0;
+  overflow: visible;
+}
+.ob-net-img-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #0e2060;
+  border: 2.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.ob-net-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Speech bubble tooltip */
+.ob-net-bubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #222;
+  border-radius: 8px;
+  padding: 5px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.ob-net-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fff;
+}
+.ob-net-bubble-name {
+  font-size: 9px;
+  font-weight: 600;
+  color: #888;
+  line-height: 1.2;
+}
+.ob-net-bubble-msg {
+  font-size: 13px;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.2;
+}
+
+/* ================================================================
+   SLIDE 2 — FEED CARD ART
+   ================================================================ */
+.ob-art-feedcard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: 0 4px;
+}
+.ob-feedcard {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  color: #111;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+}
+
+/* Card header */
+.ob-fc-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px 8px;
+}
+.ob-fc-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.ob-fc-username {
+  font-size: 12px;
+  font-weight: 800;
+  color: #111;
+}
+
+/* Image area */
+.ob-fc-imgwrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: visible;
+}
+.ob-fc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Logo pins – circular overlapping badges */
+.ob-logo-pin {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* border: 2.5px solid #fff; */
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 6;
+}
+.ob-svg-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* Sky Sports — left middle */
+.ob-pin-left-mid {
+  left: -30px;
+  top: 15%;
+  transform: translateY(-50%);
+}
+.ob-pin-bg-sky {
+  background: #c8102e;
+}
+/* Premier League — top right */
+.ob-pin-top-right {
+  top: -22px;
+  right: -22px;
+}
+.ob-pin-bg-pl {
+  background: #3d185a;
+}
+/* Football365 — right middle */
+.ob-pin-right-mid {
+  right: -24px;
+  top: 82%;
+  transform: translateY(-50%);
+}
+.ob-pin-bg-f365 {
+  background: #132435;
+}
+/* ESPN — lower left */
+.ob-pin-left-low {
+  left: -22px;
+  bottom: -15px;
+}
+.ob-pin-bg-espn {
+  background: #e11b22;
+}
+
+.ob-logo-pin.ob-pin-right-mid.ob-pin-bg-f365,
+.ob-logo-pin.ob-pin-left-low.ob-pin-bg-espn {
+  width: 50px;
+  height: 50px;
+}
+
+/* Card body */
+.ob-fc-body {
+  padding: 10px 14px 12px;
+}
+.ob-fc-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.ob-fc-acts-left {
+  display: flex;
+  gap: 10px;
+}
+.ob-fc-icon {
+  font-size: 15px;
+  cursor: pointer;
+}
+.ob-fc-likes {
+  font-size: 10px;
+  font-weight: 700;
+  color: #999;
+  margin-bottom: 4px;
+}
+.ob-fc-title {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  color: #111;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ob-fc-text {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ob-fc-more {
+  color: #aaa;
+  font-weight: 700;
+}
+
+/* ================================================================
+   SLIDE 3 — PITCH ART
+   ================================================================ */
+.ob-art-pitch {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  /* Enforce minimum height so percentage positioning works */
+  min-height: 250px;
+  max-height: 290px;
+}
+.ob-pitch {
+  width: 100%;
+  max-width: 440px;
+  height: 340px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #1a45b8 0%, #0d2270 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+  position: relative;
+}
+.ob-pitch-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Pitch markings */
+.ob-p-midline {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  width: 1.5px;
+  height: 90%;
+  background: rgba(255, 255, 255, 0.35);
+}
+.ob-p-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72px;
+  height: 72px;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+}
+.ob-p-box {
+  position: absolute;
+  top: 22%;
+  width: 14%;
+  height: 56%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+.ob-p-box-left {
+  left: 0;
+  border-left: none;
+}
+.ob-p-box-right {
+  right: 0;
+  border-right: none;
+}
+
+/* Soccer ball */
+.ob-p-ball {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  z-index: 5;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* Player tokens */
+.ob-pp {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+}
+.ob-pp img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+/* Hero player — larger */
+.ob-pp-hero img {
+  width: 40px;
+  height: 40px;
+  border-width: 1px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+/* Outside players (left/right columns) — larger, not clipped */
+.ob-pp-outside img {
+  width: 56px;
+  height: 56px;
+}
+
+/* Speech bubbles */
+.ob-pp-bubble {
+  position: absolute;
+  background: #fff;
+  color: #111;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  z-index: 8;
+  line-height: 1.3;
+}
+.ob-pp-bubble::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  transform: translateY(-50%) rotate(45deg);
+}
+.ob-pp-bubble-right {
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ob-pp-bubble-right::after {
+  left: -3px;
+}
+.ob-pp-bubble-left {
+  right: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ob-pp-bubble-left::after {
+  right: -3px;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (min-width: 400px) {
+  .ob-title {
+    font-size: 38px;
+  }
+  .ob-net-node {
+    width: 62px;
+    height: 62px;
+  }
+  .ob-net-center {
+    width: 74px;
+    height: 74px;
+  }
+}
+@media (max-height: 620px) {
+  .ob-title {
+    font-size: 28px;
+  }
+  .ob-copy {
+    padding: 14px 18px 6px;
+  }
+  .ob-net-node {
+    width: 46px;
+    height: 46px;
+  }
+  .ob-net-center {
+    width: 58px;
+    height: 58px;
+  }
+  .ob-btn {
+    padding: 11px 10px;
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ob-track {
+    transition: none;
+  }
+  .ob-dot {
+    transition: none;
+  }
+}

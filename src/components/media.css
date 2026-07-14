@@ -1,0 +1,206 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Area 5 — Media pipeline UI (MediaPicker / MediaPreview / VoiceRecorder)
+   Self-contained, scoped class names so existing styles are untouched.
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --media-ink: #0a1f44;
+  --media-line: #d9e0ec;
+  --media-accent: #1a73e8;
+  --media-err: #d23b3b;
+}
+
+/* ── MediaPicker ── */
+.media-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  padding: 18px;
+  border: 2px dashed var(--media-line);
+  border-radius: 12px;
+  background: #f7f9fc;
+  color: var(--media-ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  outline: none;
+}
+.media-picker:hover,
+.media-picker:focus-visible {
+  border-color: var(--media-accent);
+  background: #eef4ff;
+}
+.media-picker.is-dragover {
+  border-color: var(--media-accent);
+  background: #e4eeff;
+}
+.media-picker.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.media-picker-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.media-picker-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.media-picker-hint {
+  font-size: 12px;
+  color: #6b7793;
+}
+
+/* ── MediaPreview ── */
+.media-preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 96px;
+  border: 1px solid var(--media-line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.media-preview.has-error {
+  border-color: var(--media-err);
+}
+.media-preview-thumb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 96px;
+  background: #f0f3f8;
+  color: #6b7793;
+}
+.media-preview-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media-preview-audio {
+  font-size: 30px;
+  line-height: 1;
+  color: var(--media-ink);
+}
+.media-preview-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.12);
+}
+.media-preview-progress span {
+  display: block;
+  height: 100%;
+  background: var(--media-accent);
+  transition: width 0.2s ease;
+}
+.media-preview-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+}
+.media-preview-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--media-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.media-preview-size {
+  font-size: 10px;
+  color: #6b7793;
+}
+.media-preview-err {
+  font-size: 10px;
+  color: var(--media-err);
+}
+.media-preview-remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(10, 31, 68, 0.78);
+  color: #fff;
+  cursor: pointer;
+}
+.media-preview-remove:hover {
+  background: rgba(10, 31, 68, 0.95);
+}
+
+/* ── VoiceRecorder ── */
+.voice-recorder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--media-line);
+  border-radius: 999px;
+  background: #fff;
+}
+.voice-recorder.voice-unsupported {
+  border-radius: 10px;
+  font-size: 12px;
+  color: #6b7793;
+}
+.voice-wave {
+  flex: 1;
+  height: 40px;
+  max-width: 220px;
+}
+.voice-playback {
+  flex: 1;
+  height: 36px;
+  max-width: 220px;
+}
+.voice-time {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--media-ink);
+  min-width: 44px;
+  text-align: center;
+}
+.voice-error {
+  font-size: 12px;
+  color: var(--media-err);
+}
+.voice-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.voice-btn:hover {
+  transform: scale(1.06);
+}
+.voice-rec,
+.voice-send {
+  background: var(--media-accent);
+}
+.voice-stop,
+.voice-discard {
+  background: var(--media-err);
+}

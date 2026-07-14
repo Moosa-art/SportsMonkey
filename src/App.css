@@ -1,0 +1,169 @@
+.app {
+  min-height: 100vh;
+  background: var(--navy);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.app-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, #1B3370 0%, var(--navy) 50%, var(--navy-deep) 100%);
+  z-index: 0;
+}
+
+.phone-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.phone-screen {
+  background: var(--navy);
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 74px;
+}
+
+.filter-tabs {
+  padding: 19px 16px 19px !important;
+}
+
+.overlay_bg_bottom {
+  position: fixed;
+  bottom: 0;
+  display: block;
+  min-width: 100%;
+  min-height: 55vh;
+  background: white;
+  width: 100vw;
+  z-index: 1;
+}
+
+.pp-header-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ── Loading State ──────────────────────────────────────────── */
+.app-loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0A1F44 0%, #1B458F 100%);
+  z-index: 9999;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+.overlay_bg_top {
+      position: fixed;
+    top: 0;
+    width: 100vw;
+    min-width: 100vw;
+    /* min-height: 350px;
+    max-height: 350px; */
+    display: block;
+    z-index: 1;
+    background: url(/public/images/club_top_bg_new.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.overlay_bg_top>img {
+  width: 100%;
+  height: auto;
+}
+
+.bottom-nav-wrap {
+  position: fixed !important;
+}
+
+
+.icon-btn svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.phone-screen {
+    padding-top: 60px;
+}
+
+.fixtures-page,
+.table-page,
+.live-page,
+.profile-page {
+    margin-top: -61px;
+}
+
+.pp-club-bg{
+  display: none;
+}
+
+.pp-top {
+    border-top: 1px solid #ffffff45;;
+}
+
+.fp-months,
+.lv-dates {
+    justify-content: space-around;
+}
+
+.tp-content,
+.fp-list,
+.lv-content {
+    min-height: 100vh !important;
+}
+
+.lv-header{
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid #ffffff2b;
+}
+
+.tp-header,
+.fp-header {
+    justify-content: start;
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid #ffffff2b;
+}
+
+.lv-dates {
+    padding: 14px 12px 14px;
+    border-bottom: 1px solid #ffffff2b;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+  .phone-screen {
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    min-height: calc(100vh - 48px);
+  }
+}

@@ -1,0 +1,380 @@
+.table-page {
+  background: var(--navy);
+  min-height: 100vh;
+}
+
+.tp-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 16px 8px;
+}
+
+.tp-header .logo-circle {
+  width: 28px;
+  height: 28px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.15);
+  overflow: hidden;
+  padding: 1px;
+}
+
+.tp-header .logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tp-header .logo-text {
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.tp-header .logo-442 {
+  background: #fff;
+  color: var(--navy);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.tp-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px 14px;
+}
+
+.tp-country {
+  background: #fff;
+  color: var(--navy);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tp-leagues {
+  display: flex;
+  gap: 16px;
+}
+
+.tp-league {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.tp-league.active {
+  color: #fff;
+  border-bottom-color: var(--accent-red);
+}
+
+.tp-content {
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  padding: 14px;
+  min-height: 60vh;
+}
+
+.tp-updated {
+  font-size: 11px;
+  color: var(--gray-700);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.tp-table {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tp-row {
+  display: grid;
+  grid-template-columns: 28px 1.6fr 28px 28px 28px 28px 32px 36px;
+  align-items: center;
+  padding: 12px 8px;
+  font-size: 12px;
+  color: var(--navy);
+  font-weight: 600;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.tp-row > div:not(.tp-team-col):not(.tp-rank) {
+  text-align: center;
+}
+
+.tp-row.tp-head {
+  background: var(--navy);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 12px 8px;
+  border-bottom: none;
+}
+
+.tp-row.tp-head .tp-team-col {
+  text-align: left;
+  padding-left: 8px;
+}
+
+.tp-rank {
+  text-align: center;
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+.tp-team-col {
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tp-team-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.tp-team-logo-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-500);
+  font-size: 16px;
+}
+
+.tp-team-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tp-team-name {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 12.5px;
+  letter-spacing: 0.3px;
+}
+
+.tp-pts {
+  font-weight: 800 !important;
+}
+
+
+/* ---- Live league-table controls (country dropdown + league tabs) ---- */
+
+.tp-country-wrap {
+  position: relative;
+}
+
+.tp-country {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tp-country-flag {
+  width: 16px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.tp-country-flag-fallback {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.tp-leagues {
+  position: relative;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tp-league {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tp-league-more-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.tp-league-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Shared dropdown menu (countries + overflow leagues) */
+.tp-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 30;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  padding: 6px;
+  max-height: 320px;
+  overflow-y: auto;
+  min-width: 200px;
+}
+
+.tp-league-menu {
+  right: 0;
+  left: auto;
+}
+
+.tp-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+}
+
+.tp-menu-item:hover {
+  background: var(--gray-100);
+}
+
+.tp-menu-item.active {
+  background: var(--navy);
+  color: #fff;
+}
+
+.tp-menu-flag {
+  width: 20px;
+  height: 15px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ---- Loading skeletons + empty state ---- */
+
+.tp-skel {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200, #e9edf3) 37%, var(--gray-100) 63%);
+  background-size: 400% 100%;
+  animation: tp-shimmer 1.3s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+.tp-skel-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.tp-skel-name {
+  width: 80px;
+  height: 11px;
+}
+
+.tp-skel-cell {
+  width: 16px;
+  height: 11px;
+}
+
+@keyframes tp-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+.tp-empty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 52px 24px 72px;
+  gap: 14px;
+}
+
+.tp-empty-anim {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.tp-empty-ball {
+  font-size: 50px;
+  color: var(--accent-red, #e3032e);
+  animation: tp-empty-bounce 1.5s ease-in-out infinite;
+}
+
+.tp-empty-orbit {
+  position: absolute;
+  bottom: 4px;
+  width: 48px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.18);
+  filter: blur(2px);
+  animation: tp-empty-shadow 1.5s ease-in-out infinite;
+}
+
+@keyframes tp-empty-bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-22px) rotate(180deg); }
+}
+
+@keyframes tp-empty-shadow {
+  0%, 100% { transform: scaleX(1); opacity: 0.18; }
+  50%      { transform: scaleX(0.65); opacity: 0.07; }
+}
+
+.tp-empty-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.tp-empty-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.55);
+  max-width: 280px;
+  margin: 0;
+}
+
+.tp-empty {
+  padding: 28px 12px;
+  text-align: center;
+  color: var(--gray-700);
+  font-size: 13px;
+  font-weight: 600;
+}

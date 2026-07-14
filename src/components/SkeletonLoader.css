@@ -1,0 +1,64 @@
+@keyframes skel-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skel-pulse {
+  background: linear-gradient(90deg, #e8eaf0 25%, #f5f5f5 50%, #e8eaf0 75%);
+  background-size: 800px 100%;
+  animation: skel-shimmer 1.4s infinite linear;
+  border-radius: 6px;
+}
+
+.skel-card {
+  background: #fff;
+  margin: 0 8px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  padding-bottom: 12px;
+}
+
+.skel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 10px;
+}
+
+.skel-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skel-user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.skel-line {
+  border-radius: 4px;
+}
+
+.skel-body {
+  height: 200px;
+  margin: 0 14px;
+  border-radius: 8px;
+}
+
+.skel-footer {
+  display: flex;
+  gap: 16px;
+  padding: 12px 14px 0;
+}
+
+.skel-msg {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}

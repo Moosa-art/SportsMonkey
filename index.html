@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/social442-logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Social 442 - Football Social Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    .animated_svg {
+      animation: floatWave 4s ease-in-out infinite;
+    }
+
+    .path-0 {
+      animation: wave1 6s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .path-1 {
+      animation: wave2 8s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes floatWave {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes wave1 {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(-20px);
+      }
+    }
+
+    @keyframes wave2 {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(20px);
+      }
+    }
+
+    svg.animated_svg-,
+    .wave_container {
+      position: fixed;
+      top: -18px;
+      left: 0;
+      min-width: 100vw;
+      min-height: 370px;
+      max-height: 370px;
+      opacity: 0.4;
+      display: none;
+    }
+
+    .wave_container_inner {
+      min-width: 100%;
+      min-height: 370px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    svg.animated_svg {
+      position: absolute;
+      bottom: -64px;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay_bg_bottom"></div>
+  <div class="overlay_bg_top">
+    <img src="/public/club_top_bg_new.png" alt="" />
+    <div class="wave_container">
+      <div class="wave_container_inner">
+        <svg width="100%" height="100%" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="animated_svg">
+          <defs>
+            <linearGradient id="gradient" x1="1%" y1="61%" x2="99%" y2="39%">
+              <stop offset="5%" stop-color="#8ed1fc"></stop>
+              <stop offset="95%" stop-color="#0693e3"></stop>
+            </linearGradient>
+          </defs>
+
+          <path fill="url(#gradient)" fill-opacity="0.53">
+            <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
+            M0,400 L0,100 C141,114 283,128 461,139 C639,150 854,157 1023,175 C1192,193 1316,221 1440,250 L1440,400 L0,400 Z;
+
+            M0,400 L0,130 C180,80 360,50 540,90 C720,130 900,220 1080,210 C1260,200 1350,150 1440,180 L1440,400 L0,400 Z;
+
+            M0,400 L0,100 C141,114 283,128 461,139 C639,150 854,157 1023,175 C1192,193 1316,221 1440,250 L1440,400 L0,400 Z
+            "></animate>
+          </path>
+
+          <path fill="url(#gradient)" fill-opacity="1">
+            <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
+            M0,400 L0,233 C185,250 369,268 513,268 C657,268 759,251 907,267 C1055,283 1247,333 1440,383 L1440,400 L0,400 Z;
+
+            M0,400 L0,260 C150,320 350,180 520,220 C690,260 840,330 1020,280 C1200,230 1320,260 1440,310 L1440,400 L0,400 Z;
+
+            M0,400 L0,233 C185,250 369,268 513,268 C657,268 759,251 907,267 C1055,283 1247,333 1440,383 L1440,400 L0,400 Z
+            "></animate>
+          </path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+.live-page {
+  background: var(--navy);
+  min-height: 100vh;
+  padding-top: 54px; /* clears the fixed Header */
+}
+
+.lv-dates {
+  display: flex;
+  gap: 4px;
+  padding: 6px 12px 14px;
+  overflow-x: auto;
+}
+
+.lv-date {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  min-width: 56px;
+  border-bottom: 2px solid transparent;
+}
+
+.lv-date.active {
+  color: #fff;
+  border-bottom-color: var(--accent-red);
+  background: rgba(255,255,255,0.06);
+}
+
+.lv-date.active .lv-day {
+  color: #fff;
+}
+
+.lv-day {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.lv-sub {
+  font-size: 10px;
+  opacity: 0.85;
+}
+
+.lv-date.active .lv-sub {
+  opacity: 1;
+}
+
+.lv-content {
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  padding: 0 0 16px;
+  min-height: 60vh;
+}
+
+.lv-league {
+  background: #fff;
+}
+
+.lv-league-head {
+  background: var(--navy);
+  color: #fff;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lv-flag {
+  font-size: 16px;
+}
+
+.lv-flag-img {
+  width: 22px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.lv-match {
+  cursor: pointer;
+}
+
+.lv-league-name {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+}
+
+.lv-league-date {
+  font-size: 10px;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.lv-match {
+  display: grid;
+  grid-template-columns: 36px 1fr 30px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.lv-status {
+  font-size: 11px;
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+.lv-teams-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lv-team-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.lv-team-name {
+  font-size: 12.5px;
+}
+
+.lv-pen {
+  background: var(--navy);
+  color: #fff;
+  font-size: 9px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 700;
+}
+
+.lv-scores-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.lv-score {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  width: 18px;
+  text-align: center;
+}

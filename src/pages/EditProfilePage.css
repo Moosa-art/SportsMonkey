@@ -1,0 +1,211 @@
+.edit-profile-page {
+  position: absolute;
+  inset: 0;
+  background: #0a1232;
+  color: #fff;
+  overflow-y: auto;
+  z-index: 50;
+  padding-bottom: 48px;
+}
+
+.ep-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(10, 18, 50, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 5;
+}
+
+.ep-title { font-size: 16px; font-weight: 700; margin: 0; }
+
+.ep-back, .ep-save {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.ep-save { font-weight: 700; color: #ffd700; }
+.ep-save:disabled { opacity: 0.5; cursor: default; }
+
+.ep-error {
+  margin: 12px 16px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+.ep-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0 12px;
+}
+
+.ep-avatar {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1b2a6b, #0a1232);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.ep-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.ep-avatar-edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffd700;
+  color: #0a1232;
+  border: 2px solid #0a1232;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ep-change-photo {
+  background: none;
+  border: none;
+  color: #ffd700;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ep-fields {
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ep-field { display: flex; flex-direction: column; gap: 6px; }
+
+.ep-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ep-input, .ep-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 11px 12px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+}
+
+.ep-input:focus, .ep-textarea:focus { border-color: #ffd700; }
+.ep-textarea { resize: vertical; min-height: 64px; }
+
+.ep-username-row { position: relative; display: flex; align-items: center; }
+.ep-username-row .ep-at {
+  position: absolute;
+  left: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+.ep-username-row .ep-input { padding-left: 26px; }
+
+.ep-hint { font-size: 12px; min-height: 14px; }
+.ep-hint-available { color: #4ade80; }
+.ep-hint-taken, .ep-hint-invalid { color: #fca5a5; }
+.ep-hint-checking { color: rgba(255, 255, 255, 0.5); }
+
+select.ep-input { appearance: none; -webkit-appearance: none; }
+
+.ep-crop-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.ep-crop-box {
+  width: 100%;
+  max-width: 360px;
+  background: #10193f;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ep-crop-area {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ep-zoom { width: 100%; accent-color: #ffd700; }
+
+.ep-crop-actions { display: flex; gap: 10px; }
+.ep-crop-actions button {
+  flex: 1;
+  padding: 11px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.ep-crop-cancel { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.ep-crop-confirm { background: #ffd700; color: #0a1232; }
+.ep-crop-actions button:disabled { opacity: 0.6; cursor: default; }
+
+.ep-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 30, 70, 0.96);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  z-index: 120;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ep-loading { display: flex; justify-content: center; padding-top: 80px; }
